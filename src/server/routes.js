@@ -38,10 +38,26 @@ const getShunList = function() {
                 .then(json => resolve(json))
                 .catch(e => reject(e))
         } else {
-            useCached();
+            return useCached();
         }
     })
 }
+
+const getGeoIp = function(ip) {
+    return new Promise((resolve, reject) => {
+        const access_key = config.geoIp && config.geoIp.accessKey;
+        if (!access_key) {
+            reject(new Error("no geo ip accessKey"))
+        } else {
+            const url = `http://api.ipstack.com/${ip}?access_key=${access_key}&format=1`;
+            fetch(url)
+                .then(res => res.json())
+                .then(geo => resolve(geo))
+                .catch(e => reject(e))
+        }
+    });
+}
+
 
 const router = express.Router()
 
@@ -52,6 +68,12 @@ router.get('/shunList', (req, res) => {
             console.error(e);
             res.status(500).end()
         })
+})
+
+router.get('/geoIp', (req, res) => {
+    console.log(req.query.ip)
+    getGeoIp(req.query.ip)
+        .then(geo => console.log(geo))
 })
 
 module.exports = router;
