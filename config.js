@@ -1,0 +1,5 @@
+{
+    AutoShun: {
+        accountKey: null
+    }
+}

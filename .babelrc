@@ -1,0 +1,15 @@
+{
+	"presets": [
+		["env", {
+			"targets": {
+				"node": "8.9"
+			}
+		}]
+	],
+	"x-plugins": [
+		"transform-runtime",
+		"transform-async-generator-functions",
+		"transform-object-rest-spread",
+		"syntax-object-rest-spread"
+	],
+}
