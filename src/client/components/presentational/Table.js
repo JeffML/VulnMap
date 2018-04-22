@@ -16,15 +16,17 @@ const borderStyle = {
 }
 
 const Table = (props) => {
-    const locs = props.locations.map(loc => {
-        const cols = loc.map(el => <td style={borderStyle}>{el}</td>)
-        return <tr style={borderStyle}>
+    const locs = props.locations.map((loc, r) => {
+        const cols = loc.map((el, c) => <td style={borderStyle} key={c}>{el}</td>)
+        return <tr style={borderStyle} key={r}>
             {cols}
         </tr>
     });
 
     return <table style={tableStyle}>
-        {locs}
+        <tbody>
+            {locs}
+        </tbody>
     </table>
 }
 
