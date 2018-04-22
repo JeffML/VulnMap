@@ -18,7 +18,13 @@ const borderStyle = {
 
 const Table = (props) => {
     const locs = props.locations.map((loc, r) => {
-        const cols = loc.map((el, c) => <td style={borderStyle} key={c}>{el}</td>)
+        const cols = loc.map((el, c) => {
+            if (c === 0) {
+                el = <button key={el} onClick={()=>props.getGeoIP(el.key)}>{el}</button>
+            }
+            return <td style={borderStyle} key={c}>{el}</td>
+        })
+
         return <tr style={borderStyle} key={r}>
             {cols}
         </tr>

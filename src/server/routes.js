@@ -73,7 +73,7 @@ router.get('/shunList', (req, res) => {
 router.get('/geoIp', (req, res) => {
     console.log(req.query.ip)
     getGeoIp(req.query.ip)
-        .then(geo => console.log(geo))
+        .then(geo => res.send(geo))
 })
 
 module.exports = router;
