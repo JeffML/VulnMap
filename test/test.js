@@ -30,10 +30,17 @@ describe("Unit tests", () => {
                 geo.zip.should.eql('39530')
                 done()
             }).catch(e => done(e))
-    }).timeout(5000);
+    }).timeout(10000);
 });
 
 describe("Service tests", () => {
+
+    before(function() {
+        if (process.env.TRAVIS) {
+            this.skip();
+        }
+    })
+
     it("/shunList", done => {
         fetch('http://localhost:3000/service/shunList')
             .then(res => res.json())
@@ -42,7 +49,7 @@ describe("Service tests", () => {
                 list.should.have.lengthOf(500)
                 done()
             }).catch(e => done(e))
-    }).timeout(6000)
+    }).timeout(10000)
 
     it("/geoIp", done => {
         fetch('http://localhost:3000/service/geoIp?ip=108.76.138.179')
