@@ -7,6 +7,7 @@ const tableStyle = {
     borderWidth: '3px',
     borderStyle: 'solid',
     borderColor: 'black',
+    // tableLayout: 'fixed'
 }
 
 const borderStyle = {
@@ -23,8 +24,13 @@ const Table = (props) => {
         </tr>
     });
 
+    const header = <tr>
+        <th>IP</th><th>Date</th><th>Description</th>
+    </tr>
+
     return <table style={tableStyle}>
         <tbody>
+            {header}
             {locs}
         </tbody>
     </table>
