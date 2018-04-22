@@ -1,4 +1,3 @@
-const config = require('/etc/VulnMap/config')
 const fs = require('fs')
 const fetch = require('node-fetch')
 const csvParse = require('csv').parse
@@ -16,7 +15,11 @@ const convertToArrays = (csv) => {
 }
 
 const getShunList = function() {
-    const accountKey = process.env.AUTOSHUN_ACCOUNT_KEY || (config.AutoShun && config.AutoShun.accountKey)
+    var accountKey = process.env.AUTOSHUN_ACCOUNT_KEY;
+    if (!accountKey) {
+        const config = require('/etc/VulnMap/config');
+        accountKey = config.AutoShun && config.AutoShun.accountKey
+    }
 
     return new Promise((resolve, reject) => {
         const useCached = () => {
@@ -44,7 +47,12 @@ const getShunList = function() {
 
 const getGeoIp = function(ip) {
     return new Promise((resolve, reject) => {
-        const access_key = process.env.GEO_IP_ACCESS_KEY || (config.geoIp && config.geoIp.accessKey);
+        var access_key = process.env.GEO_IP_ACCESS_KEY
+        if (!access_key) {
+            const config = require('/etc/VulnMap/config');
+            access_key = config.geoIp && config.geoIp.accessKey;
+        }
+
         if (!access_key) {
             reject(new Error("no geo ip accessKey"))
         } else {
