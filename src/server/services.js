@@ -16,7 +16,7 @@ const convertToArrays = (csv) => {
 }
 
 const getShunList = function() {
-    const accountKey = process.env.AutoShunAccountKey || (config.AutoShun && config.AutoShun.accountKey)
+    const accountKey = process.env.AUTOSHUN_ACCOUNT_KEY || (config.AutoShun && config.AutoShun.accountKey)
 
     return new Promise((resolve, reject) => {
         const useCached = () => {
@@ -44,7 +44,7 @@ const getShunList = function() {
 
 const getGeoIp = function(ip) {
     return new Promise((resolve, reject) => {
-        const access_key = process.env.geoIpAccessKey || (config.geoIp && config.geoIp.accessKey);
+        const access_key = process.env.GEO_IP_ACCESS_KEY || (config.geoIp && config.geoIp.accessKey);
         if (!access_key) {
             reject(new Error("no geo ip accessKey"))
         } else {
