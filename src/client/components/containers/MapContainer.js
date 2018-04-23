@@ -2,6 +2,7 @@ import React, {
     Component
 } from 'react'
 import Map from '../presentational/Map'
+import LocationInfo from '../presentational/LocationInfo'
 
 function doMap(lat, long) {
     var mapOptions = {
@@ -37,12 +38,10 @@ class MapContainer extends Component {
             .catch(e => console.error(e))
     }
 
-    shouldComponentUpdate(newProps, newState) {
-        return newProps.currentIp && (newProps.currentIp !== this.props.currentIp);
-    }
-
     componentWillUpdate(newProps, newState) {
-        this.getGeoIp(newProps.currentIp)
+        if (newProps.currentIp !== this.props.currentIp) {
+            this.getGeoIp(newProps.currentIp)
+        }
     }
 
     render() {
@@ -50,7 +49,10 @@ class MapContainer extends Component {
 
         }
         Object.assign(props, this.state)
-        return <Map {...props}/>
+        return <div>
+            <Map {...props}/><br/><br/>
+            <LocationInfo {...props} />
+        </div>
     }
 }
 
