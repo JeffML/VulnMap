@@ -29,7 +29,7 @@ The server serves both the client bundle and the service endpoints needed by the
 
 ## Not yet implemented
 
--   Scrollable table
+-   map container
 -   Search
 -   IP Geo location descriptions
 -   map pins

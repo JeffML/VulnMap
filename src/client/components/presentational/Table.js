@@ -16,6 +16,13 @@ const borderStyle = {
     borderColor: 'black',
 }
 
+const divStyle = {
+    width: '80%',
+    height: '45%',
+    margin: 'auto',
+    overflow: 'auto',
+}
+
 const Table = (props) => {
     const locs = props.locations.map((loc, r) => {
         const cols = loc.map((el, c) => {
@@ -34,12 +41,14 @@ const Table = (props) => {
         <th>IP</th><th>Date</th><th>Description</th>
     </tr>
 
-    return <table style={tableStyle}>
-        <tbody>
-            {header}
-            {locs}
-        </tbody>
-    </table>
+    return <div style={divStyle}>
+        <table style={tableStyle}>
+            <tbody>
+                {header}
+                {locs}
+            </tbody>
+        </table>
+    </div>
 }
 
 export default Table
