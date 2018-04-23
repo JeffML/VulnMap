@@ -27,10 +27,7 @@ In another console, start the server:
 
 The server serves both the client bundle and the service endpoints needed by the client.
 
-## Not yet implemented
+## Not implemented
 
--   map container
 -   Search
--   IP Geo location descriptions
--   map pins
 -   sort by column
