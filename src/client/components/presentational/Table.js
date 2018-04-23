@@ -27,7 +27,7 @@ const Table = (props) => {
     const locs = props.locations.map((loc, r) => {
         const cols = loc.map((el, c) => {
             if (c === 0) {
-                el = <button key={el} onClick={()=>props.getGeoIP(el.key)}>{el}</button>
+                el = <button key={el} onClick={()=>props.setCurrentIp(el.key)}>{el}</button>
             }
             return <td style={borderStyle} key={c}>{el}</td>
         })

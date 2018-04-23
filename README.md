@@ -33,3 +33,4 @@ The server serves both the client bundle and the service endpoints needed by the
 -   Search
 -   IP Geo location descriptions
 -   map pins
+-   sort by column
