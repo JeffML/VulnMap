@@ -14,7 +14,7 @@ I use ipstack.com's geo ip service.
 
 ## Search
 
-You can search by IP or Description. Partial searches are supported. Search results will be shown highlighted at the top of the table.
+You can search by IP or Description (3 characters minimum). Partial searches are supported. Search results will be shown highlighted at the top of the table.
 
 # TO RUN
 
