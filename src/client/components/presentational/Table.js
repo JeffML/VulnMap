@@ -23,6 +23,11 @@ const divStyle = {
     overflow: 'auto',
 }
 
+const flaggedStyle = Object.assign({
+    backgroundColor: 'yellow',
+}, borderStyle);
+
+
 const Table = (props) => {
     const locs = props.locations.map((loc, r) => {
         const cols = loc.map((el, c) => {
@@ -32,7 +37,7 @@ const Table = (props) => {
             return <td style={borderStyle} key={c}>{el}</td>
         })
 
-        return <tr style={borderStyle} key={r}>
+        return <tr style={loc.flag? flaggedStyle : borderStyle} key={r}>
             {cols}
         </tr>
     });
@@ -41,13 +46,19 @@ const Table = (props) => {
         <th>IP</th><th>Date</th><th>Description</th>
     </tr>
 
-    return <div style={divStyle}>
-        <table style={tableStyle}>
-            <tbody>
-                {header}
-                {locs}
-            </tbody>
-        </table>
+    return <div>
+        <span>Search: </span> <input type="text" name="search" onKeyUp={evt => props.findRows(evt)} />
+
+        <br/><br/>
+
+        <div style={divStyle}>
+            <table style={tableStyle}>
+                <tbody>
+                    {header}
+                    {locs}
+                </tbody>
+            </table>
+        </div>
     </div>
 }
 

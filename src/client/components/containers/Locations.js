@@ -25,6 +25,29 @@ class Locations extends Component {
             })
     }
 
+    flagMatching(string) {
+        if (string.length < 3) {
+            return;
+        }
+
+        const list = this.state.locations.slice(0);
+
+        list.forEach((loc, i) => {
+            const flag = loc.some(el => el.includes(string))
+            list[i].flag = flag;
+        })
+
+        var flagged = list.reduce((acc, l) => {
+            if (l.flag) acc.push(l)
+            return acc
+        }, []);
+
+        console.log(flagged)
+
+        this.setState({
+            location: list
+        })
+    }
 
     render() {
         const props = {
@@ -32,6 +55,9 @@ class Locations extends Component {
                 this.setState({
                     currentIp: ip
                 })
+            }.bind(this),
+            findRows: function(evt) {
+                this.flagMatching(evt.target.value)
             }.bind(this)
         };
         Object.assign(props, this.state)
