@@ -12,7 +12,11 @@ I use ipstack.com's geo ip service.
 
 <http://api.ipstack.com/${ip}?access_key=${process.env.GEO_IP_ACCESS_KEY}&format=1>
 
-## TO RUN
+## Search
+
+You can search by IP or Description. Partial searches are supported. Search results will be shown highlighted at the top of the table.
+
+# TO RUN
 
 You'll need to acquire an account key for both AutoShun and ipstack, and assign environment variables as noted above (AUTOSHUN_ACCOUNT_KEY and GEO_IP_ACCESS_KEY).
 
@@ -27,7 +31,6 @@ In another console, start the server:
 
 The server serves both the client bundle and the service endpoints needed by the client.
 
-## Not implemented
+# TESTING
 
--   Search
--   sort by column
+Tests can be run via `npm test`.  Travis CI runs just the unit tests, and uses secured keys for the geo ip and shun list services.
