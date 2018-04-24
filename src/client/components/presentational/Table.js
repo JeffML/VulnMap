@@ -1,7 +1,8 @@
 import React from 'react'
 
 const tableStyle = {
-    height: '100%',
+    // height: '100%',
+    width: '100%',
     borderCollapse: 'collapse',
     margin: 'auto',
     borderWidth: '3px',
