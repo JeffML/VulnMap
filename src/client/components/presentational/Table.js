@@ -47,7 +47,7 @@ const Table = (props) => {
     </tr>
 
     return <div>
-        <span>Search: </span> <input type="text" name="search" onKeyUp={evt => props.findRows(evt)} />
+        <span>Search Description or IP: </span> <input type="text" name="search" onKeyUp={evt => props.findRows(evt)} />
 
         <br/><br/>
 

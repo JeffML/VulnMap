@@ -25,6 +25,15 @@ class Locations extends Component {
             })
     }
 
+    consoleDumpFlagged(list) {
+        var flagged = list.reduce((acc, l) => {
+            if (l.flag) acc.push(l)
+            return acc
+        }, []);
+
+        console.log(flagged)
+    }
+
     flagMatching(string) {
         if (string.length < 3) {
             return;
@@ -37,15 +46,10 @@ class Locations extends Component {
             list[i].flag = flag;
         })
 
-        var flagged = list.reduce((acc, l) => {
-            if (l.flag) acc.push(l)
-            return acc
-        }, []);
-
-        console.log(flagged)
-
+        list.sort((a, b) => b.flag - a.flag)
+        // this.consoleDumpFlagged(list);
         this.setState({
-            location: list
+            locations: list
         })
     }
 
