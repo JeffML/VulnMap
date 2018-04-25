@@ -29,7 +29,7 @@ In one console, run the webpack target, which will build the client bundle and w
 In another console, start the server:
 `npm run start`
 
-The server serves both the client bundle and the service endpoints needed by the client.
+The server serves both the client bundle and the service endpoints needed by the client. The one and only page is loaded at http://localhost:3000.
 
 # TESTING
 
